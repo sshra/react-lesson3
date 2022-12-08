@@ -27,28 +27,25 @@ export class ClassComponent extends React.Component {
       this.setState(state => {
         if (!state.userNumber) return state;
 
-        if (state.userNumber > state.randomNumber) {
-          return {
-            userNumber: '',
-            count: state.count + 1,
-            result: `${state.userNumber} greater then conceived.`,
-          };
-        }
+        let resultString = '';
+        let gameOverFlag = false;
+        const countTries = state.count + 1;
 
-        if (state.userNumber < state.randomNumber) {
-          return {
-            userNumber: '',
-            count: state.count + 1,
-            result: `${state.userNumber} less then conceived.`,
-          };
+        if (state.userNumber > state.randomNumber) {
+          resultString = `${state.userNumber} greater then conceived.`;
+        } else if (state.userNumber < state.randomNumber) {
+          resultString = `${state.userNumber} less then conceived.`;
+        } else {
+          resultString = `You are winner! My number is ${state.userNumber},
+          tries: ${countTries}.`;
+          gameOverFlag = true;
         }
 
         return {
           userNumber: '',
-          count: state.count + 1,
-          result: `You are winner! My number is ${state.userNumber},
-            tries: ${state.count}.`,
-          isGameOver: true,
+          count: countTries,
+          result: resultString,
+          isGameOver: gameOverFlag,
         };
       });
     }
