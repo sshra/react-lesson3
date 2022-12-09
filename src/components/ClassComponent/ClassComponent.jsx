@@ -6,6 +6,8 @@ export class ClassComponent extends React.Component {
   constructor(props) {
     super(props);
     this.state = this.initState(this.props.min, this.props.max);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
   initState(minValue, maxValue) {
@@ -18,7 +20,7 @@ export class ClassComponent extends React.Component {
     };
   }
 
-  handleSubmit = e => {
+  handleSubmit(e) {
     e.preventDefault();
 
     if (this.state.isGameOver) {
@@ -49,12 +51,13 @@ export class ClassComponent extends React.Component {
         };
       });
     }
-  };
+  }
 
-  handleChange = e =>
+  handleChange(e) {
     this.setState({
       userNumber: e.target.value,
     });
+  }
 
   render() {
     const isGameOver = this.state.isGameOver;

@@ -10,8 +10,8 @@
   ],
   "parserOptions": {
     "parser": "babel-eslint",
-    "ecmaVersion": "latest",
-    "sourceType": "module"
+    "sourceType": "module",
+    "ecmaVersion": 2017
   },
   "rules": {
     "react/react-in-jsx-scope": "off",
