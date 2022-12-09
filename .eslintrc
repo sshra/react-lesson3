@@ -5,7 +5,7 @@
     "node": true
   },
   "extends": [
-    "eslint:recommended", 
+    "eslint:recommended",
     "plugin:react/recommended"
   ],
   "parserOptions": {
@@ -142,7 +142,7 @@
         "code": 80,
         "tabWidth": 2,
         "ignoreUrls": true,
-        "ignorePattern": "goog.(module|require)"
+        "ignorePattern": "goog.(module|require)|d=('|\").*('|\")"
       }
     ],
     "new-cap": "error",

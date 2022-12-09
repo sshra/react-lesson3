@@ -18,7 +18,7 @@ export class ClassComponent extends React.Component {
     };
   }
 
-  handleSubmit = (e) => {
+  handleSubmit = e => {
     e.preventDefault();
 
     if (this.state.isGameOver) {
@@ -51,11 +51,10 @@ export class ClassComponent extends React.Component {
     }
   };
 
-  handleChange = (e) => {
+  handleChange = e =>
     this.setState({
       userNumber: e.target.value,
     });
-  };
 
   render() {
     console.log(this.state.count);
