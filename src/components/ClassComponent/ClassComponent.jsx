@@ -12,11 +12,12 @@ export class ClassComponent extends React.Component {
 
   initState(minValue, maxValue) {
     return {
-      result: 'Input your number',
+      userNumber: '',
+      result: `Input num in range of ${minValue}-${maxValue}`,
       count: 0,
       isGameOver: false,
       randomNumber:
-        Math.floor(Math.random() * maxValue - minValue) + minValue,
+        Math.floor(Math.random() * (maxValue - minValue + 1)) + minValue,
     };
   }
 
@@ -31,16 +32,24 @@ export class ClassComponent extends React.Component {
 
         let resultString = '';
         let gameOverFlag = false;
-        const countTries = state.count + 1;
+        let countTries = state.count;
 
-        if (state.userNumber > state.randomNumber) {
-          resultString = `${state.userNumber} greater then conceived.`;
-        } else if (state.userNumber < state.randomNumber) {
-          resultString = `${state.userNumber} less then conceived.`;
+        if (state.userNumber < this.props.min ||
+            state.userNumber > this.props.max) {
+          resultString = `You are out of range
+            ${this.props.min}-${this.props.max}!`;
         } else {
-          resultString = `You are winner! My number is ${state.userNumber},
-          tries: ${countTries}.`;
-          gameOverFlag = true;
+          countTries++;
+
+          if (state.userNumber > state.randomNumber) {
+            resultString = `${state.userNumber} greater then conceived.`;
+          } else if (state.userNumber < state.randomNumber) {
+            resultString = `${state.userNumber} less then conceived.`;
+          } else {
+            resultString = `You are winner! My number is ${state.userNumber},
+            tries: ${countTries}.`;
+            gameOverFlag = true;
+          }
         }
 
         return {

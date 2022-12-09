@@ -11,7 +11,7 @@
   "parserOptions": {
     "parser": "babel-eslint",
     "sourceType": "module",
-    "ecmaVersion": 2017
+    "ecmaVersion": 2015
   },
   "rules": {
     "react/react-in-jsx-scope": "off",
