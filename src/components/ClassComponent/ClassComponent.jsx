@@ -57,7 +57,6 @@ export class ClassComponent extends React.Component {
     });
 
   render() {
-    console.log(this.state.count);
     const isGameOver = this.state.isGameOver;
 
     return (
